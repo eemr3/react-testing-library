@@ -69,13 +69,12 @@ describe('Teste o componente <Pokemon.js />', () => {
   });
 
   it('Teste se existe um ícone de estrela nos Pokémons favoritados.', () => {
-    const { history } = renderWithRouter(<App
+    renderWithRouter(<App
       pokemon={ mockPokemons }
       isFavorite={ { [mockPokemons.id]: true } }
     />);
     const linkPokemon = screen.getAllByRole('link', { name: /more details$/i });
     userEvent.click(linkPokemon[1]);
-    console.log(history.location.pathname);
     const titleDetails = screen.getByText(/Pikachu Details/i);
     expect(titleDetails).toBeDefined();
     const checkedFavorite = screen.getByRole('checkbox', { checked: false });
